@@ -7,20 +7,47 @@ import java.util.Date;
  * 従業員情報を表すドメイン.
  */
 public class Employee {
-    private Integer id;
-    private String name;
-    private String image;
-    private String gender;
-    private Date hireDate;
-    private String mailAddress;
-    private String zipCode;
-    private String address;
-    private String telephone;
-    private Integer salary;
-    private String characteristics;
-    private Integer dependentsCount;
+    private Integer id;//従業員ID
+    private String name;//従業員名
+    private String image;//画像
+    private String gender;//性別
+    private Date hireDate;//入社日
+    private String mailAddress;//メールアドレス
+    private String zipCode;//郵便番号
+    private String address;//住所
+    private String telephone;//電話番号
+    private Integer salary;//給料
+    private String characteristics;//特性
+    private Integer dependentsCount;//扶養人数
 
+    /**
+     * 空のコンストラクタ.
+     * 
+     */
+    public Employee() {
+    }
     
+    /**
+     * コンストラクタ.
+     * 
+     */
+    public Employee(Integer id, String name, String image, String gender, Date hireDate, String mailAddress,
+            String zipCode, String address, String telephone, Integer salary, String characteristics,
+            Integer dependentsCount) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.gender = gender;
+        this.hireDate = hireDate;
+        this.mailAddress = mailAddress;
+        this.zipCode = zipCode;
+        this.address = address;
+        this.telephone = telephone;
+        this.salary = salary;
+        this.characteristics = characteristics;
+        this.dependentsCount = dependentsCount;
+    }
+
     public Integer getId() {
         return id;
     }
