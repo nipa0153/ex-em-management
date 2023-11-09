@@ -23,6 +23,9 @@ public class AdministratorRepository {
     @Autowired
     private NamedParameterJdbcTemplate template;
 
+    /**
+     * Administratorオブジェクトを生成するローマッパー.
+     */
     private static final RowMapper<Administrator> ADMIN_ROW_MAPPER 
     = (rs, i) -> {
         Administrator administrator = new Administrator();
@@ -54,16 +57,25 @@ public class AdministratorRepository {
                             :password
                             );
                         """;
-
+    /**
+     * 管理者情報を登録する.
+     * @param administrator
+     */
     public void insert(Administrator administrator){
         SqlParameterSource param  = new BeanPropertySqlParameterSource(administrator);
         template.update(SQL_INSERT, param);
 
     }
 
-    public List<Administrator> findByMailAddressAndPassword(String mailAddress, String password){
+    /**
+     * メールアドレスとパスワードから管理者情報を取得する.
+     * @param mailAddress
+     * @param password
+     * @return
+     */
+    public Administrator findByMailAddressAndPassword(String mailAddress, String password){
         SqlParameterSource param = new MapSqlParameterSource().addValue(mailAddress, password);
-        List<Administrator> administratorList = template.query(SQL_ADMIN_SELECT, ADMIN_ROW_MAPPER);
+        List<Administrator> administratorList = template.query(SQL_ADMIN_SELECT,param, ADMIN_ROW_MAPPER);
     if (administratorList.size() == 0) {
         return null;
     }
