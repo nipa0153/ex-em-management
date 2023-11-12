@@ -54,9 +54,11 @@ public class AdministratorController {
         administratorService.insert(administrator);
 
         return "redirect: /";
-    
+    }
     /**
      * ログイン画面に遷移する.
+     * @param form
+     * @return
      */
     @GetMapping("/")
     public String toLogin(LoginForm form){
@@ -65,6 +67,6 @@ public class AdministratorController {
     
 
         
-    }
+    
 
 }
